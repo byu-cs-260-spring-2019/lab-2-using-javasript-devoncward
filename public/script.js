@@ -38,15 +38,6 @@ window.onload = function() {
     } catch(err) {
       console.log(err);
     }
-    //Above code does the same as below, but it is prettier
-    /*
-    fetch (url)
-    .then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      console.log(json);
-    });
-    */
   });
   document.getElementById("futureWeatherSubmit").addEventListener("click", async function(event) {
     event.preventDefault();
