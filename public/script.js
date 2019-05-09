@@ -48,11 +48,9 @@ window.onload = function() {
     });
     */
   });
-}
-window.onload = function() {
-  document.getElementById("currentWeatherSubmit").addEventListener("click", async function(event) {
+  document.getElementById("futureWeatherSubmit").addEventListener("click", async function(event) {
     event.preventDefault();
-    const value = document.getElementById("currentWeatherInput").value;
+    const value = document.getElementById("futureWeatherInput").value;
     if (value === "")
       return;
     console.log(value);
@@ -85,7 +83,7 @@ window.onload = function() {
 	         results += ", "
          }
       results += "</p>";
-      document.getElementById("currentWeatherResults").innerHTML = results;
+      document.getElementById("futureWeatherResults").innerHTML = results;
     } catch(err) {
       console.log(err);
     }
