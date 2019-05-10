@@ -28,12 +28,12 @@ window.onload = function() {
       //Adds the main temperature tag into the h2 file
       results += '<h2> Av. Temp: ' + json.main.temp + " &deg;F";
       results += '<ul>';
-        results += '<li>'
-        results += '<h3> High. Temp: ' + json.main.temp_max + " &deg;F</h3>";
-      results += '</li>'
-        results += '<li>'
-        results += '<h3> Low. Temp: ' + json.main.temp_min + " &deg;F</h3>";
-      results += '</li>'
+        results += '<li>';
+          results += '<h3> High. Temp: ' + json.main.temp_max + " &deg;F</h3>";
+        results += '</li>';
+        results += '<li>';
+          results += '<h3> Low. Temp: ' + json.main.temp_min + " &deg;F</h3>";
+        results += '</li>';
       results += '</ul>';
       results += "</h2>";
       results += '<h2> Humidity: ' + json.main.humidity + " %</h2>";
@@ -44,7 +44,7 @@ window.onload = function() {
 	         results += ", ";
          }
       }
-      results += "<h2> Cloud Cover: " + json.clouds.all + "%</h2>";
+      results += "<h2> Cloud Cover: " + json.clouds.all + " %</h2>";
       results += "</p>";
       results += '<br>';
       results += "<h1> Recommendation: Perfect weather for a run </h1>";
@@ -68,17 +68,42 @@ window.onload = function() {
       console.log("json: ", json);  //This gets it in json file, readable
 
       let forecast = "";
-      //forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
       var currentDate = "";
       for (let i=0; i < json.list.length; i++) {
         var date = moment(json.list[i].dt_txt).format('MMMM Do YYYY');
         if(currentDate != date) {
             forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY') + "</h2>";
+            forecast += "<br>";
             currentDate = date;
         }
-        forecast += "<h2>" + moment(json.list[i].dt_txt).format('h:mm:ss') + "</h2>";
-        forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
-        forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
+
+        forecast += '<h3 style="float:left;">' + moment(json.list[i].dt_txt).format('h:mm:ss') + "</h3>";
+        forecast += '<img style="position: relative" src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>';
+        forecast += "<p>";
+        forecast += '<ul>';
+          forecast += '<li>';
+            forecast += '<h4> Av. Temp: ' + json.list[i].main.temp + " &deg;F</h4>";
+            forecast += '<ul>';
+              forecast += '<li>';
+                forecast += '<h5> High. Temp: ' + json.list[i].main.temp_max + " &deg;F</h5>";
+              forecast += '</li>';
+              forecast += '<li>';
+                forecast += '<h5> Low. Temp: ' + json.list[i].main.temp_min + " &deg;F</h5>";
+              forecast += '</li>';
+            forecast += '</ul>';
+          forecast += '</li>';
+          forecast += '<li>';
+            forecast += '<h4> Humidity: ' + json.list[i].main.humidity + " %</h4>";
+          forecast += '</li>';
+          forecast += '<li>';
+            forecast += '<h4> Wind Speed: ' + json.list[i].wind.speed + " mph</h4>";
+          forecast += '</li>';
+          forecast += '<li>';
+            forecast += '<h4> Cloud Cover: ' + json.list[i].clouds.all + " %</h4>";
+          forecast += '</li>';
+        forecast += '</ul>';
+        forecast += "</p>";
+        forecast += "<br>";
       }
       document.getElementById("futureWeatherResults").innerHTML = forecast;
     } catch(err) {
