@@ -70,13 +70,14 @@ window.onload = function() {
       let forecast = "";
       var currentDate = "";
       for (let i=0; i < json.list.length; i++) {
+
         var date = moment(json.list[i].dt_txt).format('MMMM Do YYYY');
         if(currentDate != date) {
-            forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY') + "</h2>";
+            forecast += '<h2>' + moment(json.list[i].dt_txt).format('MMMM Do YYYY') + "</h2>";
             forecast += "<br>";
             currentDate = date;
         }
-
+        forecast += '<div style="display: inline-block;">';
         forecast += '<h3 style="float:left;">' + moment(json.list[i].dt_txt).format('h:mm:ss') + "</h3>";
         forecast += '<img style="position: relative" src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>';
         forecast += "<p>";
@@ -104,6 +105,7 @@ window.onload = function() {
         forecast += '</ul>';
         forecast += "</p>";
         forecast += "<br>";
+        forecast += '</div>';
       }
       document.getElementById("futureWeatherResults").innerHTML = forecast;
     } catch(err) {
