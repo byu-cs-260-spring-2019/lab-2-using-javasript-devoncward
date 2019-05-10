@@ -1,0 +1,9 @@
+body {
+  background-image: url("./images/greenbackground.jpg");
+  background-size: cover;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+}

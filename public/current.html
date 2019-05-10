@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8"/>
     <title>Lab 2</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styleCurrent.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-    <script text="type/javascript" src="./script.js">
+    <script text="type/javascript" src="./currentScript.js">
     </script>
   </head>
   <body>
@@ -27,19 +27,15 @@
     </nav>
     <div>
       <h1 class="title">
-        Weather Report
+        Current Weather Report
       </h1>
     </div>
-    <br>
-    <br>
-    <div>
-      <h2 class="title">
-        Please Select one of the menu options above to get your desired weather forecast
-      </h2>
+    <div id="currentWeatherResults">
+      <form>
+        <label>Enter a U.S. city to get the current forcast</label>
+        <input id="currentWeatherInput" type="text"></input><br/>
+        <input id="currentWeatherSubmit" type="submit" value="Submit"></input>
+      </form>
     </div>
-    <br>
-    <br>
-    <br>
-    <img id="happysun" src="./images/happysun.png" alt="happy sun" width="500" height="500">
   </body>
 </html>
