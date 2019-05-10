@@ -68,10 +68,17 @@ window.onload = function() {
       console.log("json: ", json);  //This gets it in json file, readable
 
       let forecast = "";
+      //forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
+      var currentDate = "";
       for (let i=0; i < json.list.length; i++) {
-	       forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
-	       forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
-	       forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
+        var date = moment(json.list[i].dt_txt).format('MMMM Do YYYY');
+        if(currentDate != date) {
+            forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY') + "</h2>";
+            currentDate = date;
+        }
+        forecast += "<h2>" + moment(json.list[i].dt_txt).format('h:mm:ss') + "</h2>";
+        forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
+        forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
       }
       document.getElementById("futureWeatherResults").innerHTML = forecast;
     } catch(err) {
